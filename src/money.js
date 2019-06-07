@@ -3,14 +3,13 @@ let sponsors = {
   eu: ['SRL', 'PLO', 'J&K'],
   rus: ['RusAuto', 'SBO']
 };
-const {cash, eu, rus, eu: [srl]} = sponsors;
 
 class Sponsor {
-  constructor({cash = ['1000'], eu = ['EU'], rus = ['RU'], risk = 'risk'} = {}) {
-    this.cash = cash;
-    this.eu = eu;
-    this.rus = rus;
-    this.risk = risk;
+  constructor(sponsor = {cash: ['100'], eu: ['EU'], rus: ['RU']}) {
+    this.cash = sponsor.cash;
+    this.eu = sponsor.eu;
+    this.rus = sponsor.rus;
+    this.risk = sponsor.eu[0];
   }
   money() {
     return this.cash.reduce((previousValue, currentValue) => previousValue + currentValue);
@@ -23,5 +22,5 @@ class Sponsor {
   }
 }
 
-let newSponsors = new Sponsor({cash: cash, eu: eu, rus: rus, risk: srl});
+let newSponsors = new Sponsor(sponsors);
 export default newSponsors;
